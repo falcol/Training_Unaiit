@@ -8,37 +8,45 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Training_Unaiit
 build_property.RootNamespace = Training_Unaiit
-build_property.ProjectDir = b:\ASPNET\Training_Unaiit\
+build_property.ProjectDir = B:\ASPNET\Training_Unaiit\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = b:\ASPNET\Training_Unaiit
+build_property.MSBuildProjectDirectory = B:\ASPNET\Training_Unaiit
 build_property._RazorSourceGeneratorDebug = 
 
-[b:/ASPNET/Training_Unaiit/Pages/Error.cshtml]
+[B:/ASPNET/Training_Unaiit/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[b:/ASPNET/Training_Unaiit/Pages/Index.cshtml]
+[B:/ASPNET/Training_Unaiit/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[b:/ASPNET/Training_Unaiit/Pages/Privacy.cshtml]
+[B:/ASPNET/Training_Unaiit/Pages/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[b:/ASPNET/Training_Unaiit/Pages/Shared/_ValidationScriptsPartial.cshtml]
+[B:/ASPNET/Training_Unaiit/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[b:/ASPNET/Training_Unaiit/Pages/_ViewImports.cshtml]
+[B:/ASPNET/Training_Unaiit/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[b:/ASPNET/Training_Unaiit/Pages/_ViewStart.cshtml]
+[B:/ASPNET/Training_Unaiit/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[b:/ASPNET/Training_Unaiit/Pages/Shared/_Layout.cshtml]
+[B:/ASPNET/Training_Unaiit/Views/Shared/_PagingXTL.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9QYWdpbmdYVEwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[B:/ASPNET/Training_Unaiit/Views/Shared/_StatusMessage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TdGF0dXNNZXNzYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[B:/ASPNET/Training_Unaiit/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-r4xcqsh6l4
