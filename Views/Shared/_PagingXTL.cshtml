@@ -1,32 +1,32 @@
 @* 
     Model:
-      - currentPage:int - Trang hiện tại
-      - countPages:int - tổng số trang
-      - generateUrl:delegate Func<int?, string> trả về URL tương ứng với trang p (1,2,3 ...)
+      - CurrentPage:int - Trang hiện tại
+      - CountPages:int - tổng số trang
+      - GenerateUrl:delegate Func<int?, string> trả về URL tương ứng với trang p (1,2,3 ...)
 *@
 
 @model App.Models.PagingModel
 @{
-    int currentPage  = Model.currentpage;
-    int countPages   = Model.countpages;
-    var generateUrl  = Model.generateUrl;
+    int CurrentPage  = Model.CurrentPage;
+    int CountPages   = Model.CountPages;
+    var GenerateUrl  = Model.GenerateUrl;
 
 
     
-    if (currentPage > countPages) 
-      currentPage = countPages;
+    if (CurrentPage > CountPages) 
+      CurrentPage = CountPages;
 
-    if (countPages <= 1) return;
+    if (CountPages <= 1) return;
     
 
     int? preview = null;
     int? next = null;
 
-    if (currentPage > 1)
-        preview = currentPage - 1;
+    if (CurrentPage > 1)
+        preview = CurrentPage - 1;
 
-    if (currentPage < countPages)
-        next = currentPage + 1;
+    if (CurrentPage < CountPages)
+        next = CurrentPage + 1;
 
     // Các trang hiện thị trong điều hướng
     List<int> pagesRanges = new List<int>();    
@@ -35,17 +35,17 @@
     int delta      = 5;             // Số trang mở rộng về mỗi bên trang hiện tại     
     int remain     = delta * 2;     // Số trang hai bên trang hiện tại
 
-    pagesRanges.Add(currentPage);
+    pagesRanges.Add(CurrentPage);
     // Các trang phát triển về hai bên trang hiện tại
     for (int i = 1; i <= delta; i++)
     {
-        if (currentPage + i  <= countPages) {
-            pagesRanges.Add(currentPage + i); 
+        if (CurrentPage + i  <= CountPages) {
+            pagesRanges.Add(CurrentPage + i); 
             remain --;
         }
                
-        if (currentPage - i >= 1) {
-            pagesRanges.Insert(0, currentPage - i);
+        if (CurrentPage - i >= 1) {
+            pagesRanges.Insert(0, CurrentPage - i);
             remain --;
         }
             
@@ -56,7 +56,7 @@
         if (pagesRanges[0] == 1) {
             for (int i = 1; i <= remain; i++)
             {
-                if (pagesRanges.Last() + 1 <= countPages) {
+                if (pagesRanges.Last() + 1 <= CountPages) {
                     pagesRanges.Add(pagesRanges.Last() + 1);
                 }
             }
@@ -80,7 +80,7 @@
     @if (preview != null)
     {
         <li class="page-item">
-            <a class="page-link" href="@generateUrl(preview)">Trang trước</a>
+            <a class="page-link" href="@GenerateUrl(preview)">Trang trước</a>
         </li>
     }
     else
@@ -93,9 +93,9 @@
     <!-- Numbered page links -->
     @foreach (var pageitem in pagesRanges)
     {
-        if (pageitem != currentPage) {
+        if (pageitem != CurrentPage) {
             <li class="page-item">
-                <a class="page-link" href="@generateUrl(pageitem)">
+                <a class="page-link" href="@GenerateUrl(pageitem)">
                     @pageitem
                 </a>
             </li>
@@ -103,7 +103,7 @@
         else 
         {
             <li class="page-item active" aria-current="page">
-                <a class="page-link" href="#">@pageitem <span class="sr-only">(current)</span></a>
+                <a class="page-link" href="#">@pageitem <span class="sr-only"></span></a>
             </li>
         }
     }
@@ -113,7 +113,7 @@
     @if (next != null)
     {
         <li class="page-item">
-            <a class="page-link" href="@generateUrl(next)">Trang sau</a>
+            <a class="page-link" href="@GenerateUrl(next)">Trang sau</a>
         </li>
     }
     else 

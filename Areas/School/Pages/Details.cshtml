@@ -1,0 +1,43 @@
+@page
+@model Training_Unaiit.Areas_School.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>SchoolTable</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SchoolTable.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SchoolTable.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SchoolTable.Address)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SchoolTable.Address)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SchoolTable.Founded)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SchoolTable.Founded)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SchoolTable.Capacity)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SchoolTable.Capacity)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.SchoolTable?.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

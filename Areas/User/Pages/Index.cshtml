@@ -1,0 +1,40 @@
+﻿@page "/admin/users"
+@model Unaiit.Admin.User.IndexModel
+@{
+    ViewData["Title"] = "Users";
+}
+
+<h2>@ViewData["Title"] (@Model.totalUsers)</h2>
+<partial name="_StatusMessage" model="@Model.StatusMessage" />
+
+
+<table class="table">
+    <tr>
+        <th>Ten user</th>
+        <th>Vai tro</th>
+        <th>tac vu</th>
+    </tr>
+    @foreach (var user in Model.users)
+    {
+        <tr>
+            <td>@user.UserName</td>
+            <td>@user.RoleNames</td>
+            <td></td>
+            <td>
+                    <a class="btn btn-success" asp-page="./AddRole" asp-route-id="@user.Id">Them Role</a>
+                <a class="btn btn-success" asp-page="./SetPassword" asp-route-id="@user.Id">Pass</a>
+            </td>
+        </tr>
+    }
+</table>
+
+@{
+    var pagingmodel = new App.Models.PagingModel()
+    {
+        CurrentPage = Model.CurrentPage,
+        CountPages = Model.CountPages,
+        GenerateUrl = (int? p) => Url.Page("./Index", new { p = p })
+    };
+}
+
+<partial name="_PagingXTL" model="@pagingmodel" />

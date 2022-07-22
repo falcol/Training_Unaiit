@@ -1,0 +1,50 @@
+@page
+@model Training_Unaiit.Areas_School.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>SchoolTable</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="SchoolTable.Id" />
+            <div class="form-group">
+                <label asp-for="SchoolTable.Name" class="control-label"></label>
+                <input asp-for="SchoolTable.Name" class="form-control" />
+                <span asp-validation-for="SchoolTable.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SchoolTable.Address" class="control-label"></label>
+                <input asp-for="SchoolTable.Address" class="form-control" />
+                <span asp-validation-for="SchoolTable.Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SchoolTable.Founded" class="control-label"></label>
+                <input asp-for="SchoolTable.Founded" class="form-control" />
+                <span asp-validation-for="SchoolTable.Founded" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SchoolTable.Capacity" class="control-label"></label>
+                <input asp-for="SchoolTable.Capacity" class="form-control" />
+                <span asp-validation-for="SchoolTable.Capacity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

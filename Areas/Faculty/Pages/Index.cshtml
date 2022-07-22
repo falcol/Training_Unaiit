@@ -1,0 +1,64 @@
+@page "/admin/faculty"
+@model Training_Unaiit.Areas_Faculty_Pages.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FacultyTable[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FacultyTable[0].Capacity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FacultyTable[0].Founded)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FacultyTable[0].Creator)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FacultyTable[0].SchoolId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.FacultyTable) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Capacity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Founded)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Creator)
+            </td>
+            <td>
+               @{
+                    var school = item.SchoolId;
+                    var schoolName = Model.SchoolTable.FirstOrDefault(x => x.Id.Equals(school)).Name;
+                    @Html.DisplayFor(modelItem => schoolName);
+                }
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

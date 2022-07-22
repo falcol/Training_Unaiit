@@ -1,0 +1,30 @@
+﻿@page "/admin/set-role/{id}"
+@model Training_Unaiit.Areas.User.AddRoleModel
+@{
+    ViewData["Title"] = "gan role";
+}
+
+<h3>Set your Role @Model.user.Email</h3>
+<partial name="_StatusMessage" for="StatusMessage" />
+
+<div class="row">
+    <div class="col-md-6">
+        <form id="set-password-form" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-floating">
+                <label asp-for="RoleNames" class="form-label"></label>
+                <br><br><br>
+                <div>
+                @Html.ListBoxFor(m => m.RoleNames, @Model.allRoles)
+                </div>
+                <span asp-validation-for="RoleNames" class="text-danger"></span>
+            </div>
+            <button type="submit" class="w-100 btn btn-lg btn-primary">Cap Nhap</button>
+        </form>
+        <a class="btn btn-primary" asp-page="./Index">Index</a>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

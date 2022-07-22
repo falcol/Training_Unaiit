@@ -1,0 +1,33 @@
+﻿@page "/admin/delete/{roleid}"
+@model Unaiit.Admin.Role.DeleteModel
+@{
+ ViewData["Title"] = "Delete";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<partial name="_StatusMessage" model="@Model.StatusMessage" />
+
+
+<hr>
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger" ></div>
+            <p>Ban muon xoa role <strong>@Model.role.Name</strong></p>
+
+            <div class="form-group mt-3">
+                <input type="submit" value="Xoa" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<a asp-page="./Index">Index</a>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

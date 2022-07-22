@@ -12,8 +12,8 @@ using Unaiit.Models;
 namespace Training_Unaiit.Migrations
 {
     [DbContext(typeof(UnaiitDbContext))]
-    [Migration("20220719074448_init")]
-    partial class init
+    [Migration("20220720100342_Newss")]
+    partial class Newss
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -104,12 +104,10 @@ namespace Training_Unaiit.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderKey")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -146,12 +144,10 @@ namespace Training_Unaiit.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -163,28 +159,28 @@ namespace Training_Unaiit.Migrations
 
             modelBuilder.Entity("Training_Unaiit.Models.Faculty.FacultyTable", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Capacity")
                         .HasColumnType("int");
 
                     b.Property<string>("Creator")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<DateTime>("Founded")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
-                    b.Property<int?>("SchoolId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("SchoolId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -195,28 +191,28 @@ namespace Training_Unaiit.Migrations
 
             modelBuilder.Entity("Training_Unaiit.Models.Grade.GradeTable", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Capacity")
                         .HasColumnType("int");
 
                     b.Property<string>("Creator")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
-                    b.Property<int?>("FacultyId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("FacultyId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("Founded")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
@@ -227,15 +223,14 @@ namespace Training_Unaiit.Migrations
 
             modelBuilder.Entity("Training_Unaiit.Models.School.SchoolTable", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Address")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<int>("Capacity")
                         .HasColumnType("int");
@@ -245,7 +240,8 @@ namespace Training_Unaiit.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
@@ -260,14 +256,14 @@ namespace Training_Unaiit.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("BirthDate")
+                    b.Property<DateTime?>("BirthDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("DeletedAt")
+                    b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
@@ -277,12 +273,9 @@ namespace Training_Unaiit.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("GradeTableId")
-                        .HasColumnType("int");
-
                     b.Property<string>("HomeAddress")
-                        .IsRequired()
-                        .HasColumnType("nvarchar");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -291,8 +284,8 @@ namespace Training_Unaiit.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -311,9 +304,6 @@ namespace Training_Unaiit.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("SchoolTableId")
-                        .HasColumnType("int");
-
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -329,8 +319,6 @@ namespace Training_Unaiit.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("GradeTableId");
-
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
 
@@ -338,8 +326,6 @@ namespace Training_Unaiit.Migrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.HasIndex("SchoolTableId");
 
                     b.ToTable("Users", (string)null);
                 });
@@ -398,7 +384,7 @@ namespace Training_Unaiit.Migrations
             modelBuilder.Entity("Training_Unaiit.Models.Faculty.FacultyTable", b =>
                 {
                     b.HasOne("Training_Unaiit.Models.School.SchoolTable", "School")
-                        .WithMany("Faculties")
+                        .WithMany()
                         .HasForeignKey("SchoolId");
 
                     b.Navigation("School");
@@ -407,38 +393,10 @@ namespace Training_Unaiit.Migrations
             modelBuilder.Entity("Training_Unaiit.Models.Grade.GradeTable", b =>
                 {
                     b.HasOne("Training_Unaiit.Models.Faculty.FacultyTable", "Faculty")
-                        .WithMany("Classes")
+                        .WithMany()
                         .HasForeignKey("FacultyId");
 
                     b.Navigation("Faculty");
-                });
-
-            modelBuilder.Entity("Unaiit.Models.AppUser", b =>
-                {
-                    b.HasOne("Training_Unaiit.Models.Grade.GradeTable", null)
-                        .WithMany("Students")
-                        .HasForeignKey("GradeTableId");
-
-                    b.HasOne("Training_Unaiit.Models.School.SchoolTable", null)
-                        .WithMany("Students")
-                        .HasForeignKey("SchoolTableId");
-                });
-
-            modelBuilder.Entity("Training_Unaiit.Models.Faculty.FacultyTable", b =>
-                {
-                    b.Navigation("Classes");
-                });
-
-            modelBuilder.Entity("Training_Unaiit.Models.Grade.GradeTable", b =>
-                {
-                    b.Navigation("Students");
-                });
-
-            modelBuilder.Entity("Training_Unaiit.Models.School.SchoolTable", b =>
-                {
-                    b.Navigation("Faculties");
-
-                    b.Navigation("Students");
                 });
 #pragma warning restore 612, 618
         }
