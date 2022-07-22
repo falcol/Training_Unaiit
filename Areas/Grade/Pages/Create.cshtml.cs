@@ -17,13 +17,15 @@ namespace Training_Unaiit.Areas_Grade_Pages
     public class CreateModel : PageModel
     {
         private readonly Unaiit.Models.UnaiitDbContext _context;
+        private readonly ILogger<CreateModel> _logger;
 
-        public CreateModel(Unaiit.Models.UnaiitDbContext context)
+        public CreateModel(Unaiit.Models.UnaiitDbContext context, ILogger<CreateModel> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
-        public SelectList? allGrade { get; set; }
+        public SelectList? allGrades { get; set; }
 
         [BindProperty]
         [Display(Name = "Grade")]
@@ -32,7 +34,7 @@ namespace Training_Unaiit.Areas_Grade_Pages
 
         public async Task<IActionResult> OnGet()
         {
-            allGrade = new SelectList(await _context.Faculty.ToListAsync(), "Id", "Name");
+            allGrades = new SelectList(await _context.Faculty.ToListAsync(), "Id", "Name");
 
             return Page();
         }
@@ -45,10 +47,12 @@ namespace Training_Unaiit.Areas_Grade_Pages
         {
           if (!ModelState.IsValid || _context.Grade == null || GradeTable == null)
             {
+                allGrades = new SelectList(await _context.Faculty.ToListAsync(), "Id", "Name");
+
                 return Page();
             }
-            GradeTable.FacultyId = Guid.Parse(GradelId[0]);
-
+            // GradeTable.FacultyId = Guid.Parse(GradelId[0]);
+            GradeTable.Id = Guid.NewGuid();
 
             _context.Grade.Add(GradeTable);
             await _context.SaveChangesAsync();

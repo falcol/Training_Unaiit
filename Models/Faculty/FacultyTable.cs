@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Training_Unaiit.CustomValidate;
+using Training_Unaiit.Migrations;
 using Training_Unaiit.Models.Grade;
 using Training_Unaiit.Models.School;
 using Unaiit.Models;
@@ -21,8 +22,8 @@ namespace Training_Unaiit.Models.Faculty
         public string? Name { get; set; }
 
         [Display(Name = "Học viên tối đa")]
-        [Range(0, 200, ErrorMessage = "Học viên tối đa là 200")]
-        // [ValidateCapacity("")]
+        [ValidateCapacityFaculty]
+        // [Range(0, 200, ErrorMessage = "Học viên tối đa là 200")]
         public int Capacity { get; set; }
 
         [Display(Name = "Ngày thành lập")]

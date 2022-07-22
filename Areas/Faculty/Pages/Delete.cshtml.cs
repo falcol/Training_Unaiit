@@ -52,6 +52,11 @@ namespace Training_Unaiit.Areas_Faculty_Pages
 
             if (facultytable != null)
             {
+                var grade = await _context.Grade.Where(x => x.FacultyId == id).ToListAsync();
+                foreach (var item in grade)
+                {
+                    _context.Grade.Remove(item);
+                }
                 FacultyTable = facultytable;
                 _context.Faculty.Remove(FacultyTable);
                 await _context.SaveChangesAsync();

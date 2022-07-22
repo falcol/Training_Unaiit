@@ -24,6 +24,7 @@ namespace Training_Unaiit.Models.Grade
         public string? Name { get; set; }
 
         [Display(Name = "Học viên tối đa")]
+        [ValidateCapacityGrade]
         public int Capacity { get; set; }
 
         [Display(Name = "Ngày thành lập")]
@@ -36,8 +37,9 @@ namespace Training_Unaiit.Models.Grade
         [MaxLength(50, ErrorMessage = "Tên người tạo không được vượt quá 50 ký tự")]
         public string? Creator { get; set; }
 
-        public Guid? FacultyId { get; set; }
         public FacultyTable? Faculty { get; set; }
+        [Display(Name = "Khoa")]
+        public Guid? FacultyId { get; set; }
         public ICollection<AppUser>? Students { get; set; }
     }
 }

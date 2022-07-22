@@ -34,11 +34,6 @@ namespace Training_Unaiit.Areas_Faculty_Pages
 
         public async Task<IActionResult> OnGet()
         {
-            // SchoolNames = (await _context.School.ToListAsync()).Select(s => new SelectListItem
-            // {
-            //     Text = s.Name,
-            //     Value = s.Id.ToString(),
-            // });
             allSchool = new SelectList(await _context.School.ToListAsync(), "Id", "Name");
 
             return Page();
@@ -50,7 +45,7 @@ namespace Training_Unaiit.Areas_Faculty_Pages
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-            
+            // FacultyTable.SchoolId = Guid.Parse(SchoolId[0]);
             if (!ModelState.IsValid || _context.Faculty == null || FacultyTable == null)
             {
                 _logger.LogInformation("ModelState is valid {}", ModelState.IsValid);
@@ -58,9 +53,8 @@ namespace Training_Unaiit.Areas_Faculty_Pages
                 allSchool = new SelectList(await _context.School.ToListAsync(), "Id", "Name");
                 return Page();
             }
-            FacultyTable.SchoolId = Guid.Parse(SchoolId[0]);
             FacultyTable.Id = Guid.NewGuid();
-            _logger.LogInformation("FACULTY TABLE {} ", FacultyTable.ToJson());
+            // _logger.LogInformation("FACULTY TABLE {} ", FacultyTable.ToJson());
 
             _context.Faculty.Add(FacultyTable);
             await _context.SaveChangesAsync();

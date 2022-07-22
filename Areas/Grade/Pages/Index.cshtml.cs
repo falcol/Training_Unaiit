@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Training_Unaiit.Models.Faculty;
 using Training_Unaiit.Models.Grade;
 using Unaiit.Models;
 
@@ -20,12 +21,14 @@ namespace Training_Unaiit.Areas_Grade_Pages
         }
 
         public IList<GradeTable> GradeTable { get;set; } = default!;
+        public IList<FacultyTable> FacultyTable { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
             if (_context.Grade != null)
             {
                 GradeTable = await _context.Grade.ToListAsync();
+                FacultyTable = await _context.Faculty.ToListAsync();
             }
         }
     }

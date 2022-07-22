@@ -36,7 +36,7 @@
             <div class="form-group">
                 <label asp-for="SchoolId" class="form-label"></label>
                 <div>
-                    @Html.DropDownListFor(m => m.SchoolId, @Model.allSchool, new { @class = "form-control" })
+                    @Html.DropDownListFor(m => m.FacultyTable.SchoolId, @Model.allSchool, new { @class = "form-control" })
                 </div>
                 <span asp-validation-for="SchoolId" class="text-danger"></span>
             </div>
