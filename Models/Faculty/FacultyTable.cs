@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Training_Unaiit.CustomValidate;
 using Training_Unaiit.Models.Grade;
 using Training_Unaiit.Models.School;
+using Unaiit.Models;
 
 namespace Training_Unaiit.Models.Faculty
 {
@@ -21,6 +22,7 @@ namespace Training_Unaiit.Models.Faculty
 
         [Display(Name = "Học viên tối đa")]
         [Range(0, 200, ErrorMessage = "Học viên tối đa là 200")]
+        // [ValidateCapacity("")]
         public int Capacity { get; set; }
 
         [Display(Name = "Ngày thành lập")]

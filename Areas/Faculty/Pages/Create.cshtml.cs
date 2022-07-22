@@ -29,6 +29,7 @@ namespace Training_Unaiit.Areas_Faculty_Pages
 
         [BindProperty]
         [Display(Name = "Schools")]
+        [Required(ErrorMessage = "Bạn chưa chọn trường")]
         public string[]? SchoolId { get; set; }
 
         public async Task<IActionResult> OnGet()
@@ -49,9 +50,7 @@ namespace Training_Unaiit.Areas_Faculty_Pages
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-            FacultyTable.SchoolId = Guid.Parse(SchoolId[0]);
-            FacultyTable.Id = Guid.NewGuid();
-            _logger.LogInformation("FACULTY TABLE {} ", FacultyTable.ToJson());
+            
             if (!ModelState.IsValid || _context.Faculty == null || FacultyTable == null)
             {
                 _logger.LogInformation("ModelState is valid {}", ModelState.IsValid);
@@ -59,6 +58,9 @@ namespace Training_Unaiit.Areas_Faculty_Pages
                 allSchool = new SelectList(await _context.School.ToListAsync(), "Id", "Name");
                 return Page();
             }
+            FacultyTable.SchoolId = Guid.Parse(SchoolId[0]);
+            FacultyTable.Id = Guid.NewGuid();
+            _logger.LogInformation("FACULTY TABLE {} ", FacultyTable.ToJson());
 
             _context.Faculty.Add(FacultyTable);
             await _context.SaveChangesAsync();

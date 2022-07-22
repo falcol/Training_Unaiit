@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+// using Microsoft.Build.Framework;
 using Microsoft.EntityFrameworkCore;
 using Training_Unaiit.Models.Grade;
 using Unaiit.Models;
@@ -25,12 +27,21 @@ namespace Training_Unaiit.Areas_Grade_Pages
         [BindProperty]
         public GradeTable GradeTable { get; set; } = default!;
 
+        public SelectList? allFal { get; set; }
+
+        [BindProperty]
+        [Display(Name = "Grade")]
+        [Required(ErrorMessage = "Vui lòng chọn khối")]
+        public string[]? FacultyId { get; set; }
+
         public async Task<IActionResult> OnGetAsync(Guid? id)
         {
             if (id == null || _context.Grade == null)
             {
                 return NotFound();
             }
+
+            allFal = new SelectList(await _context.Faculty.ToListAsync(), "Id", "Name");
 
             var gradetable =  await _context.Grade.FirstOrDefaultAsync(m => m.Id.Equals(id));
             if (gradetable == null)
@@ -50,6 +61,7 @@ namespace Training_Unaiit.Areas_Grade_Pages
                 return Page();
             }
 
+            GradeTable.FacultyId = Guid.Parse(FacultyId[0]);
             _context.Attach(GradeTable).State = EntityState.Modified;
 
             try

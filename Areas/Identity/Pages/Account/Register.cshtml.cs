@@ -136,6 +136,7 @@ namespace Training_Unaiit.Areas.Identity.Pages.Account
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
                     await _userManager.AddToRoleAsync(user, "Student");
+                    await _userManager.AddToRoleAsync(user, "Admin");
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
                         return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });

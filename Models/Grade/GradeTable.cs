@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Security.Policy;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Training_Unaiit.CustomValidate;
@@ -35,6 +36,7 @@ namespace Training_Unaiit.Models.Grade
         [MaxLength(50, ErrorMessage = "Tên người tạo không được vượt quá 50 ký tự")]
         public string? Creator { get; set; }
 
+        public Guid? FacultyId { get; set; }
         public FacultyTable? Faculty { get; set; }
         public ICollection<AppUser>? Students { get; set; }
     }

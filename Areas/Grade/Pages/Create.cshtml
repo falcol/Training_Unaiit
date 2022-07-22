@@ -34,6 +34,13 @@
                 <span asp-validation-for="GradeTable.Creator" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="GradelId" class="form-label"></label>
+                <div>
+                    @Html.DropDownListFor(m => m.GradelId, @Model.allGrade, new { @class = "form-control" })
+                </div>
+                <span asp-validation-for="GradelId" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-2">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
