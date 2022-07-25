@@ -15,6 +15,9 @@ namespace Training_Unaiit.CustomValidate
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
             var capacity_faculty = (FacultyTable)validationContext.ObjectInstance;
+            if (capacity_faculty.SchoolId == null){
+                return new ValidationResult("Bạn chưa chọn trường");
+            }
             var _context = (UnaiitDbContext?)validationContext?.GetService(typeof(UnaiitDbContext));
             var capacity_school_value = _context?.School?.FirstOrDefault(m => m.Id == capacity_faculty.SchoolId)?.Capacity;
 

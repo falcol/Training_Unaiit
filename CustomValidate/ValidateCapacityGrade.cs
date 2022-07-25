@@ -16,6 +16,9 @@ namespace Training_Unaiit.CustomValidate
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
             var grade_faculty = (GradeTable)validationContext.ObjectInstance;
+            if (grade_faculty.FacultyId == null){
+                return new ValidationResult("Bạn chưa chọn khoa");
+            }
             var _context = (UnaiitDbContext?)validationContext?.GetService(typeof(UnaiitDbContext));
             var capacity_faculty_value = _context?.Faculty?.FirstOrDefault(m => m.Id == grade_faculty.FacultyId)?.Capacity;
             Console.WriteLine("GRADE: " + capacity_faculty_value.ToJson());
