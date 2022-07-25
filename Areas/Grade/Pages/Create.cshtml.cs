@@ -28,7 +28,7 @@ namespace Training_Unaiit.Areas_Grade_Pages
         public SelectList? allGrades { get; set; }
 
         [BindProperty]
-        [Display(Name = "Grade")]
+        [Display(Name = "Khoa")]
         [Required(ErrorMessage = "Vui lòng chọn khối")]
         public string[]? GradelId { get; set; }
 

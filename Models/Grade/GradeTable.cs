@@ -25,20 +25,24 @@ namespace Training_Unaiit.Models.Grade
 
         [Display(Name = "Học viên tối đa")]
         [ValidateCapacityGrade]
+        [Required(ErrorMessage = "Cần phải có học viên tối đa")]
         public int Capacity { get; set; }
 
         [Display(Name = "Ngày thành lập")]
         [DataType(DataType.Date)]
         [CustomDateTime(ErrorMessage = "Ngày thành lập nhỏ hơn hoặc bằng ngày hiện tại")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Required(ErrorMessage = "Cần phải có ngày thành lập")]
         public DateTime Founded { get; set; }
 
         [Display(Name = "Người tạo")]
         [MaxLength(50, ErrorMessage = "Tên người tạo không được vượt quá 50 ký tự")]
+        [Required(ErrorMessage = "Cần phải có người tạo")]
         public string? Creator { get; set; }
 
         public FacultyTable? Faculty { get; set; }
         [Display(Name = "Khoa")]
+        [Required(ErrorMessage = "Cần phải có khoa")]
         public Guid? FacultyId { get; set; }
         public ICollection<AppUser>? Students { get; set; }
     }

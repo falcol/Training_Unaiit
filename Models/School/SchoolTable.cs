@@ -35,6 +35,7 @@ namespace Training_Unaiit.Models.School
 
         [Display(Name = "Số lượng học viên tối đa")]
         [Range(0, 1000, ErrorMessage = "Số lượng học viên tối đa nhỏ hơn 1000")]
+        [Required(ErrorMessage = "Cần phải có số lượng học viên tối đa")]
         public int? Capacity { get; set; }
 
     }
