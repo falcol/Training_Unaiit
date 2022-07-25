@@ -28,7 +28,7 @@ namespace Training_Unaiit.Areas_Faculty_Pages
 
         [BindProperty]
         [Display(Name = "Schools")]
-        public string[]? SchoolId { get; set; }
+        public IEnumerable<SelectListItem> SchoolId { get; set; }
 
         public async Task<IActionResult> OnGetAsync(Guid? id)
         {
@@ -54,12 +54,22 @@ namespace Training_Unaiit.Areas_Faculty_Pages
         {
             if (!ModelState.IsValid)
             {
+                allSchool = new SelectList(await _context.School.ToListAsync(), "Id", "Name");
+
                 return Page();
             }
-            FacultyTable.SchoolId = Guid.Parse(SchoolId[0]);
+            // FacultyTable.SchoolId = Guid.Parse(SchoolId.FirstOrDefault(x => x.Selected)?.Value);
+            // var updateFaculty = await _context.Faculty.AsNoTracking().FirstOrDefaultAsync(m => m.Id == FacultyTable.Id);
 
-            _context.Attach(FacultyTable).State = EntityState.Modified;
-
+            // _context.Update(FacultyTable);
+            // _context.Attach(FacultyTable).State = EntityState.Detached;
+            var Fac = await _context.Faculty.FirstOrDefaultAsync(m => m.Id == FacultyTable.Id);
+            Fac.Name = FacultyTable.Name;
+            Fac.SchoolId = FacultyTable.SchoolId;
+            Fac.Id = FacultyTable.Id;
+            Fac.Founded = FacultyTable.Founded;
+            Fac.Creator = FacultyTable.Creator;
+            Fac.Capacity = FacultyTable.Capacity;
             try
             {
                 await _context.SaveChangesAsync();

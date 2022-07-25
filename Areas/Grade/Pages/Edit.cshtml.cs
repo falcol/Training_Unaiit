@@ -63,8 +63,14 @@ namespace Training_Unaiit.Areas_Grade_Pages
                 return Page();
             }
 
-            GradeTable.FacultyId = Guid.Parse(FacultyId[0]);
-            _context.Attach(GradeTable).State = EntityState.Modified;
+            // _context.Attach(GradeTable).State = EntityState.Modified;
+            var grade = await _context.Grade.FirstOrDefaultAsync(m => m.Id.Equals(GradeTable.Id));
+            grade.Id = GradeTable.Id;
+            grade.Name = GradeTable.Name;
+            grade.FacultyId = GradeTable.FacultyId;
+            grade.Capacity = GradeTable.Capacity;
+            grade.Creator = GradeTable.Creator;
+            grade.Founded = GradeTable.Founded;
 
             try
             {
