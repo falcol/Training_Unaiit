@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Unaiit.Models;
 
@@ -11,9 +12,10 @@ using Unaiit.Models;
 namespace Training_Unaiit.Migrations
 {
     [DbContext(typeof(UnaiitDbContext))]
-    partial class UnaiitDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220725034906_moveRequire")]
+    partial class moveRequire
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

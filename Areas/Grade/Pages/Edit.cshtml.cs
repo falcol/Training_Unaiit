@@ -30,7 +30,7 @@ namespace Training_Unaiit.Areas_Grade_Pages
         public SelectList? allFal { get; set; }
 
         [BindProperty]
-        [Display(Name = "Grade")]
+        [Display(Name = "Khối")]
         [Required(ErrorMessage = "Vui lòng chọn khối")]
         public string[]? FacultyId { get; set; }
 
@@ -58,6 +58,8 @@ namespace Training_Unaiit.Areas_Grade_Pages
         {
             if (!ModelState.IsValid)
             {
+                allFal = new SelectList(await _context.Faculty.ToListAsync(), "Id", "Name");
+
                 return Page();
             }
 

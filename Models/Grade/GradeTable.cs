@@ -42,7 +42,7 @@ namespace Training_Unaiit.Models.Grade
 
         public FacultyTable? Faculty { get; set; }
         [Display(Name = "Khoa")]
-        [Required(ErrorMessage = "Cần phải có khoa")]
+        // [Required(ErrorMessage = "Cần phải có khoa")]
         public Guid? FacultyId { get; set; }
         public ICollection<AppUser>? Students { get; set; }
     }
