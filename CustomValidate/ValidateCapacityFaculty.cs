@@ -15,10 +15,13 @@ namespace Training_Unaiit.CustomValidate
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
             var capacity_faculty = (FacultyTable)validationContext.ObjectInstance;
+            var _context = (UnaiitDbContext?)validationContext?.GetService(typeof(UnaiitDbContext));
+            if (_context.Faculty.FirstOrDefault(m => m.Id == capacity_faculty.Id) != null){
+                return ValidationResult.Success;
+            }
             if (capacity_faculty.SchoolId == null){
                 return new ValidationResult("Bạn chưa chọn trường");
             }
-            var _context = (UnaiitDbContext?)validationContext?.GetService(typeof(UnaiitDbContext));
             var capacity_school_value = _context?.School?.FirstOrDefault(m => m.Id == capacity_faculty.SchoolId)?.Capacity;
 
             var all_capacity_faculty = _context?.Faculty.Where(x => x.SchoolId == capacity_faculty.SchoolId).ToList() ?? new List<FacultyTable>();
